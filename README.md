@@ -23,31 +23,7 @@ Este repositório foi ampliado para incluir melhorias de usabilidade, acessibili
 - `test/` — testes de integração (Mocha + Supertest)
 - `.github/workflows/ci.yml` — workflow de CI
 
-## ▶️ Como rodar localmente (Windows PowerShell)
-
-1) Instale dependências:
-```powershell
-npm install
-```
-
-2) Rodar em desenvolvimento (com reload automático):
-```powershell
-npm run dev
-```
-
-3) Rodar normalmente:
-```powershell
-npm start
-```
-
-4) Rodar os testes (Mocha):
-```powershell
-npm test
-```
-
 5) Abrir no navegador:
 
 - http://localhost:3000
-
-
-Se quiser, eu posso rodar os comandos Git para você agora (posso executar `git add/commit/push` se desejar). Diga se devo prosseguir com o push ou se prefere rodar os comandos manualmente.
+ar os comandos Git para você agora (posso executar `git add/commit/push` se desejar). Diga se devo prosseguir com o push ou se prefere rodar os comandos manualmente.
