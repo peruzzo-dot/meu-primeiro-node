@@ -1,6 +1,28 @@
 import express from 'express';
 const app = express();
-const porta = 3000;
+const porta = process.env.PORT || 3000;
+
+// Servir arquivos estáticos (CSS, JS, imagens)
+app.use(express.static('public'));
+
+// Pequeno middleware de segurança: headers recomendados para ajudar usabilidade/segurança
+app.use((req, res, next) => {
+    // Evita que navegadores interpretem tipos de conteúdo errados
+    res.setHeader('X-Content-Type-Options', 'nosniff');
+    // Previne o site ser carregado em iframes de terceiros
+    res.setHeader('X-Frame-Options', 'DENY');
+    // Política de referências
+    res.setHeader('Referrer-Policy', 'no-referrer-when-downgrade');
+    // CSP mínimo permitindo recursos próprios e Google Fonts
+    res.setHeader('Content-Security-Policy', "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:;");
+    next();
+});
+
+// Logging simples legível para desenvolvimento
+app.use((req, res, next) => {
+    console.log(`${new Date().toISOString()} - ${req.method} ${req.url}`);
+    next();
+});
 
 // Simulação de um Banco de Dados de Projetos
 const meusProjetos = [
@@ -9,17 +31,9 @@ const meusProjetos = [
     { id: 3, nome: "Sistema de Horto", tecnologia: "Node.js/MySQL", status: "Planejamento" }
 ];
 
-// Rota Principal (Visual)
+// Rota Principal - Carrega o Front-end moderno
 app.get('/', (req, res) => {
-    res.send(`
-        <body style="font-family: sans-serif; text-align: center; background-color: #f4f4f9; padding: 50px;">
-            <h1 style="color: #333;">🚀 API de Projetos da Vitória</h1>
-            <p>Servidor Node.js rodando com sucesso!</p>
-            <div style="background: white; padding: 20px; border-radius: 10px; display: inline-block; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-                <a href="/projetos" style="text-decoration: none; color: blue; font-weight: bold;">📦 Ver todos os projetos (JSON)</a>
-            </div>
-        </body>
-    `);
+    res.sendFile(process.cwd() + '/public/index.html');
 });
 
 // Rota que retorna JSON (O que recrutadores amam ver)
@@ -39,6 +53,12 @@ app.get('/projetos/:id', (req, res) => {
     }
 });
 
-app.listen(porta, () => {
-    console.log(`Servidor rodando em http://localhost:${porta}`);
-});
+// Export app para permitir testes e reutilização
+export default app;
+
+// Apenas iniciar o servidor quando não estivermos em ambiente de teste
+if (process.env.NODE_ENV !== 'test') {
+    app.listen(porta, () => {
+        console.log(`Servidor rodando em http://localhost:${porta}`);
+    });
+}
