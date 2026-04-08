@@ -21,9 +21,20 @@ Este repositório foi ampliado para incluir melhorias de usabilidade, acessibili
   - `GET /projetos/:id` — retorna projeto por id
 - `public/` — front-end estático (HTML, CSS, JS)
 - `test/` — testes de integração (Mocha + Supertest)
+
+5. **Acesse no navegador:**
+   Abra [http://localhost:3000](http://localhost:3000) para interagir com a interface.
+
+---
+
+## 🛠 Tecnologias Utilizadas
+* **Node.js** & **Express** (Back-end)
+* **Tailwind CSS** (Front-end Styling)
+* **JavaScript (ES6+)**
+* **Mocha & Supertest** (Testes de Integração)
+* **GitHub Actions** (CI/CD)
+
+## 👩‍💻 Autora
+Desenvolvido por **Vitória Souza**. Conecte-se comigo no [LinkedIn](www.linkedin.com/in/vitória-souza-558723342).
 - `.github/workflows/ci.yml` — workflow de CI
 
-5) Abrir no navegador:
-
-- http://localhost:3000
-ar os comandos Git para você agora (posso executar `git add/commit/push` se desejar). Diga se devo prosseguir com o push ou se prefere rodar os comandos manualmente.
