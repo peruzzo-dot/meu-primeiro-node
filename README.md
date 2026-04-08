@@ -49,41 +49,5 @@ npm test
 
 - http://localhost:3000
 
-## 🧪 Comandos Git para subir tudo para o GitHub
-
-Os comandos abaixo assumem que o remote `origin` já esteja configurado para o repositório GitHub (ex.: `https://github.com/peruzzo-dot/meu-primeiro-node.git`). Se o `origin` não existir, substitua `origin` pela URL ou configure-a com `git remote add origin <url>`.
-
-Execute no PowerShell a partir da raiz do projeto:
-```powershell
-# 1) Verificar branch atual e alterações
-git branch --show-current
-git status --porcelain
-
-# 2) Adicionar arquivos modificados
-git add .
-
-# 3) Criar commit com mensagem descritiva
-git commit -m "chore: UI responsiva, acessibilidade, testes e CI"
-
-# 4) Enviar para o GitHub (branch main)
-git push origin main
-```
-
-Se você usa outra branch (ex.: `master` ou `main` diferente), substitua `main` pelo nome correto.
-
-Se o push falhar por autenticação, use um token pessoal (PAT) ou configure suas credenciais Git/GitHub (GitHub CLI `gh auth login` ajuda neste processo).
-
-## 🔍 O que verificar após o push
-
-- No GitHub: verifique se o repositório recebeu o commit.
-- Acesse a aba Actions para ver o workflow de CI disparar e rodar os testes.
-
-## Próximos passos sugeridos
-
-- Executar uma auditoria Lighthouse e aplicar melhorias de performance.
-- Adicionar testes de UI (ex.: Playwright) para testar a interface.
-- Tornar a CSP mais restrita usando nonces — requisito: injetar nonces no servidor.
-
----
 
 Se quiser, eu posso rodar os comandos Git para você agora (posso executar `git add/commit/push` se desejar). Diga se devo prosseguir com o push ou se prefere rodar os comandos manualmente.
